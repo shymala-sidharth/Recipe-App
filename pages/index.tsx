@@ -8,12 +8,15 @@ export default function Home() {
   const [diet, setDiet] = useState(null); // stores the diet type
   const [exclude, setExclude] = useState(null); // stores the excluded ingredients
   const [response, setResponse] = useState(null); // stores the response from the API
+  const [loading, setLoading] = useState(false); // stores the loading state
 
   //Get recipes with matching user inputs from the API
 
   const getRecipes = async () => {
     try {
       diet === 'none' ? ('diet' == null) : null; // Remove diet from the query if the user selects 'none'
+      setLoading(true);
+      
     }
   }
 
