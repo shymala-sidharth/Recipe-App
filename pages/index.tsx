@@ -40,7 +40,7 @@ export default function Home() {
 
 
 
-
+console.log('form submitted')
       </form>
 
 
