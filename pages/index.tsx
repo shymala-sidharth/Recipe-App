@@ -19,21 +19,22 @@ export default function Home() {
         <input type="text" placeholder="Search for recipes" className="flex w-full placeholder:text-gray-300 rounded-lg shadow-lg shadow-red-300 px-5 py-3 text-center text-xl text-indigo-800 font-semibold focus:outline-none focus:ring-2 focus:ring-indigo-900" />
 
         <div className="mt-10 flex sm:flex-row flex-col justify-start">
-          <div className="sm:w-1/3 w-full">
+          <div className="sm:w-1/2 w-full">
             <label className="block text-indigo-900 text-xl font-semibold text-center">Diet</label>
-            <select className="mt-3 rounded-lg w-full px-5 py-3 text-indigo-900 font-bold focus:outline-none"> {['none', 'vegan', 'vegetarian', 'pescatarian', 'lacto ovo vegetarian', 'paleo', 'primal', 'whole30', 'keto'].map((diet) => {
-              return <option value={diet}>{diet}</option>
+            <select className="mt-3 text-center rounded-lg w-full px-5 py-3 text-indigo-900 font-bold focus:outline-none"> {['none', 'vegan', 'vegetarian', 'pescatarian', 'lacto ovo vegetarian', 'paleo', 'primal', 'whole30', 'keto'].map((diet) => {
+              return <option key={diet} value={diet}>{diet}</option>
             } )}
             </select>
             </div>
 
-            <div className="sm:ml-20 sm:w-1/3 w-full">
+            <div className="sm:ml-20 sm:w-1/2 w-full">
             <label className="block text-indigo-900 text-xl font-semibold text-center">Exclude Ingredients</label>
-            <input  type='text' className='mt-3 rounded-lg w-full px-5 py-3 text-indigo-900 font-bold focus:outline-none placeholder:text-gray-300' placeholder="onion">
+            <input  type='text' className='mt-3 text-center rounded-lg w-full px-5 py-3 text-indigo-900 font-bold focus:outline-none placeholder:text-gray-300' placeholder="onion">
             </input>
             </div>
         </div>
-        <button></button>
+
+            <button className="mt-10 w-full rounded-lg px-5 py-5 bg-indigo-900 text-white font-bold text-lg hover:bg-red-300 transition-colors duration-300 sm:px-10" >Search</button>
         
 
 
