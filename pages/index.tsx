@@ -1,6 +1,11 @@
-
+import { useState } from "react";
 
 export default function Home() {
+
+
+
+
+
 	return (
 		<div className="flex flex-col md:px-12 px-0 relative bg-red-100 font-raleway items-center min-h-screen">
 			<h1 className="text-7xl font-bold text-indigo-900 mt-20">
@@ -34,13 +39,13 @@ export default function Home() {
             </div>
         </div>
 
-            <button className="mt-10 w-full rounded-lg px-5 py-5 bg-indigo-900 text-white font-bold text-lg hover:bg-red-300 transition-colors duration-300 sm:px-10" >Search</button>
+            <button className="mt-10 w-full rounded-lg px-5 py-5 bg-indigo-900 text-white font-bold text-lg hover:bg-red-300 transition-colors duration-300 sm:px-10">Search</button>
         
 
 
 
 
-console.log('form submitted')
+
       </form>
 
 
