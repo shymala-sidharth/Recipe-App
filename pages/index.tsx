@@ -1,6 +1,12 @@
 import { useState } from "react";
 
+
 export default function Home() {
+
+  const [keyword, setKeyword] = useState(null); //stores the input recipe names
+  const [diet, setDiet] = useState(null); // stores the diet type
+  const [exclude, setExclude] = useState(null); // stores the excluded ingredients
+  const [response, setResponse] = useState(null); // stores the response from the API
 
 
 
