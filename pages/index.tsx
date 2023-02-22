@@ -5,20 +5,31 @@ import axios from "axios";
 export default function Home() {
 
   const [keyword, setKeyword] = useState(null); //stores the input recipe names
-  const [diet, setDiet] = useState(null); // stores the diet type
+  let [diet, setDiet] = useState(null); // stores the diet type
   const [exclude, setExclude] = useState(null); // stores the excluded ingredients
   const [response, setResponse] = useState(null); // stores the response from the API
   const [loading, setLoading] = useState(false); // stores the loading state
 
   //Get recipes with matching user inputs from the API
 
-  const getRecipes = async () => {
-    try {
-      diet === 'none' ? ('diet' == null) : null; // Remove diet from the query if the user selects 'none'
-      setLoading(true);
-      
-    }
+
+async function getRecipes() {
+  try {
+    diet === 'none' ? (diet = diet) : null; // if the user selects 'none' as the diet, then the diet is set to null
+    setLoading(true); // set loading to true
+    const response = await axios.get('api/search/', {
+      params: {keyword, diet, exclude} // pass the user inputs to the API
+
+    })
+
+    const {data} = response; // get the data from the response. Object destructuring to extract the data from the response object
+    setResponse(data.results) // stores results in the response state
+    console.log(data.results)
   }
+  catch (error) {
+    console.log(error)
+  }
+}
 
 
 
@@ -36,15 +47,18 @@ export default function Home() {
       <form className="sm:max mt-20 md:max-w-4xl  justify-center flex flex-col sm:w-full sm:flex"
       onSubmit={(e) => {
         e.preventDefault();
-        console.log("Form submitted");
+        getRecipes(); // call the getRecipes function when the form is submitted
         e.stopPropagation();
       }}>
-        <input type="text" placeholder="Search for recipes" className="flex w-full placeholder:text-gray-300 rounded-lg shadow-lg shadow-red-300 px-5 py-3 text-center text-xl text-indigo-800 font-semibold focus:outline-none focus:ring-2 focus:ring-indigo-900" />
+        <input type="text" placeholder="Search for recipes" className="flex w-full placeholder:text-gray-300 rounded-lg shadow-lg shadow-red-300 px-5 py-3 text-center text-xl text-indigo-800 font-semibold focus:outline-none focus:ring-2 focus:ring-indigo-900" onChange={e => {
+          setKeyword(e.target.value)
+          setResponse(null)
+        }} />
 
         <div className="mt-10 flex sm:flex-row flex-col justify-start">
           <div className="sm:w-1/2 w-full">
             <label className="block text-indigo-900 text-xl font-semibold text-center">Diet</label>
-            <select className="mt-3 text-center rounded-lg w-full px-5 py-3 text-indigo-900 font-bold focus:outline-none"> {['none', 'vegan', 'vegetarian', 'pescatarian', 'lacto ovo vegetarian', 'paleo', 'primal', 'whole30', 'keto'].map((diet) => {
+            <select className="mt-3 text-center rounded-lg w-full px-5 py-3 text-indigo-900 font-bold focus:outline-none" onChange={e => setDiet(e.target.value)}> {['none', 'vegan', 'vegetarian', 'pescatarian', 'lacto ovo vegetarian', 'paleo', 'primal', 'whole30', 'keto'].map((diet) => {
               return <option key={diet} value={diet}>{diet}</option>
             } )}
             </select>
@@ -52,7 +66,7 @@ export default function Home() {
 
             <div className="sm:ml-20 sm:w-1/2 w-full">
             <label className="block text-indigo-900 text-xl font-semibold text-center">Exclude Ingredients</label>
-            <input  type='text' className='mt-3 text-center rounded-lg w-full px-5 py-3 text-indigo-900 font-bold focus:outline-none placeholder:text-gray-300' placeholder="onion">
+            <input  type='text' className='mt-3 text-center rounded-lg w-full px-5 py-3 text-indigo-900 font-bold focus:outline-none placeholder:text-gray-300' placeholder="onion" onChange={e => setExclude(e.target.value)}>
             </input>
             </div>
         </div>
