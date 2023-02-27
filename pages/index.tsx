@@ -4,11 +4,11 @@ import axios from "axios";
 
 export default function Home() {
 
-  const [keyword, setKeyword] = useState(null); //stores the input recipe names
-  let [diet, setDiet] = useState(null); // stores the diet type
-  const [exclude, setExclude] = useState(null); // stores the excluded ingredients
-  const [response, setResponse] = useState(null); // stores the response from the API
-  const [loading, setLoading] = useState(false); // stores the loading state
+  const [keyword, setKeyword] = useState<string | undefined>(''); //stores the input recipe names
+  let [diet, setDiet] = useState<string | undefined>(''); // stores the diet type
+  const [exclude, setExclude] = useState<string | undefined>(''); // stores the excluded ingredients
+  const [response, setResponse] = useState<string | undefined>(''); // stores the response from the API
+  const [loading, setLoading] = useState<boolean | undefined>(false); // stores the loading state
 
   //Get recipes with matching user inputs from the API
 
@@ -38,7 +38,7 @@ async function getRecipes() {
 	return (
 		<div className="flex flex-col md:px-12 px-0 relative bg-red-100 font-raleway items-center min-h-screen">
 			<h1 className="text-7xl font-bold text-indigo-900 mt-20">
-				Spoonancular!
+				Spoonacular!
 			</h1>
 			<h2 className="text-indigo-800 text-2xl font-light mt-5">
 				Search recipes from all over the world.
@@ -52,7 +52,7 @@ async function getRecipes() {
       }}>
         <input type="text" placeholder="Search for recipes" className="flex w-full placeholder:text-gray-300 rounded-lg shadow-lg shadow-red-300 px-5 py-3 text-center text-xl text-indigo-800 font-semibold focus:outline-none focus:ring-2 focus:ring-indigo-900" onChange={e => {
           setKeyword(e.target.value)
-          setResponse(null)
+          setResponse('')
         }} />
 
         <div className="mt-10 flex sm:flex-row flex-col justify-start">
