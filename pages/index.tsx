@@ -7,7 +7,7 @@ export default function Home() {
   const [keyword, setKeyword] = useState<string | undefined>(''); //stores the input recipe names
   let [diet, setDiet] = useState<string | undefined>(''); // stores the diet type
   const [exclude, setExclude] = useState<string | undefined>(''); // stores the excluded ingredients
-  const [response, setResponse] = useState<string | undefined>(''); // stores the response from the API
+  const [response, setResponse] = useState<any | undefined>(''); // stores the response from the API
   const [loading, setLoading] = useState<boolean | undefined>(false); // stores the loading state
 
   //Get recipes with matching user inputs from the API
