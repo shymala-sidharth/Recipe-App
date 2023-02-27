@@ -6,7 +6,7 @@ export default async function handler(req, res) {
 
   const options = {
     method: 'GET',
-    url: 'https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/complexSearch',
+    url: 'https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/search',
     params: {
       query: req.query.keyword,
       diet: req.query.diet,

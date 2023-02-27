@@ -72,13 +72,38 @@ async function getRecipes() {
         </div>
 
             <button className="mt-10 w-full rounded-lg px-5 py-5 bg-indigo-900 text-white font-bold text-lg hover:bg-red-300 transition-colors duration-300 sm:px-10">Search</button>
+              </form>
+
+  {response && ( // if the response state is not null, then display the results 
+
+  <div className="mt-10">
+    <div className="mt-6 grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
+      {response.map(recipe => (
+        <div key={recipe.id} className='pt-5'>
+          
+          <div className="flow-root bg-red-200 rounded-lg px-4 pb-8">
+          <div className="text-center justify-center items-center">
+            <h3 className="mt-4 text-3xl font-bold w-full break-words overflow-x-auto text-indigo-800 tracking-tight">{recipe.title}</h3>
+
+          </div>
+            <span className="p-2">
+              <img src={`http://spoonacular.com/recipeImages/` + recipe.image} className='w-full h-full rounded-lg' alt={recipe.id}/>
+             </span>
+
+          </div>
         
 
+        </div>
+      ))}
+      
+      
+      </div> 
 
 
-
-
-      </form>
+  </div>
+  
+  
+  )}
 
 
 
