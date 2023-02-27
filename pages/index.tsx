@@ -7,7 +7,7 @@ export default function Home() {
   const [keyword, setKeyword] = useState<string | undefined>(''); //stores the input recipe names
   let [diet, setDiet] = useState<string | undefined>(''); // stores the diet type
   const [exclude, setExclude] = useState<string | undefined>(''); // stores the excluded ingredients
-  const [response, setResponse] = useState<any | undefined>(''); // stores the response from the API
+  const [response, setResponse] = useState<any[]>([]); // stores the response from the API
   const [loading, setLoading] = useState<boolean | undefined>(false); // stores the loading state
 
   //Get recipes with matching user inputs from the API
@@ -52,7 +52,7 @@ async function getRecipes() {
       }}>
         <input type="text" placeholder="Search for recipes" className="flex w-full placeholder:text-gray-300 rounded-lg shadow-lg shadow-red-300 px-5 py-3 text-center text-xl text-indigo-800 font-semibold focus:outline-none focus:ring-2 focus:ring-indigo-900" onChange={e => {
           setKeyword(e.target.value)
-          setResponse('')
+          setResponse([])
         }} />
 
         <div className="mt-10 flex sm:flex-row flex-col justify-start">
