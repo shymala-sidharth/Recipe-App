@@ -83,12 +83,25 @@ async function getRecipes() {
           
           <div className="flow-root bg-red-200 rounded-lg px-4 pb-8">
           <div className="text-center justify-center items-center">
-            <h3 className="mt-4 text-3xl font-bold w-full break-words overflow-x-auto text-indigo-800 tracking-tight">{recipe.title}</h3>
+            <h3 className="mt-4 text-3xl font-bold w-full break-words overflow-x-auto text-indigo-900 tracking-tight">{recipe.title}</h3>
 
           </div>
             <span className="p-2">
               <img src={`http://spoonacular.com/recipeImages/` + recipe.image} className='w-full h-full rounded-lg' alt={recipe.id}/>
              </span>
+
+             <div className="text-center justify-center items-center">
+            <h2 className="mt-2 text-xl text-indigo-900 block">
+              Ready in {recipe.readyInMinutes} minutes </h2>
+              <h2 className="mt-2 text-xl text-indigo-900 block">
+              Serving {recipe.servings} people </h2>
+
+              <a className="mt-4 text-xl text-indigo-800 block" href={recipe.sourceUrl} target='_blank'>
+              <button className="mt-10 w-full rounded-lg px-5 py-5 bg-indigo-900 text-white font-bold text-lg hover:bg-red-300 transition-colors duration-300 sm:px-10">View Recipe</button>
+
+              </a>
+
+          </div>
 
           </div>
         
