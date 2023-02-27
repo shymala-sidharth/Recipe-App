@@ -23,8 +23,8 @@ async function getRecipes() {
     })
 
     const {data} = response; // get the data from the response. Object destructuring to extract the data from the response object
-    setResponse(data.results) // stores results in the response state
-    console.log(data.results)
+    setResponse(data.results || []) // stores results in the response state
+    console.log(data.results || [])
   }
   catch (error) {
     console.log(error)
