@@ -7,7 +7,7 @@ export default async function handler(req, res) {
   const options = {
     method: 'GET',
     url: 'https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/search',
-    setTimeout: 10000,
+    timeout: 10000,
     params: {
       query: req.query.keyword,
       diet: req.query.diet,
